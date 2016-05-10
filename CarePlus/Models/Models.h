@@ -9,5 +9,8 @@
 #ifndef Models_h
 #define Models_h
 
+#import "TweetTags.h"
+#import "Contacts.h"
+#import "ModelContext.h"
 
 #endif /* Models_h */

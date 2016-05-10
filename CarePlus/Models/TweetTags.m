@@ -7,9 +7,19 @@
 //
 
 #import "TweetTags.h"
+#import "ModelContext.h"
 
 @implementation TweetTags
 
 // Insert code here to add functionality to your managed object subclass
 
+
++ (NSArray *) allTags{
+    return [[ModelContext sharedContext] fetchEntities:[self class]];
+}
+
+
+- (void) save{
+    [[ModelContext sharedContext]saveContext];
+}
 @end

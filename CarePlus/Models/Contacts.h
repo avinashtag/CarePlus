@@ -14,7 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Contacts : NSManagedObject
 
 // Insert code here to declare functionality of your managed object subclass
-
++ (NSArray *) allContacts;
+- (void) save;
 @end
 
 NS_ASSUME_NONNULL_END

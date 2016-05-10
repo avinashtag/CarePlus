@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "Model.h"
+#import "Models.h"
 
 @interface ModelContext : NSObject
 
@@ -18,9 +18,8 @@
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 - (void)saveContext;
-ModelContext* sharedContext();
++(ModelContext*) sharedContext;
 
--(void) configureDatabase;
 
 -(void)removeIfExist:(Class)classs;
 - (void) removeEntity:(NSManagedObject *)entity;

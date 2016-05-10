@@ -14,9 +14,25 @@
 		6AD948EF1CE1DDB500273466 /* CarePlus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6AD948ED1CE1DDB500273466 /* CarePlus.xcdatamodeld */; };
 		6AD948F11CE1DDB500273466 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AD948F01CE1DDB500273466 /* Assets.xcassets */; };
 		6AD948F41CE1DDB500273466 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AD948F21CE1DDB500273466 /* LaunchScreen.storyboard */; };
+		6AD949011CE1E01B00273466 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD949001CE1E01B00273466 /* HomeViewController.m */; };
+		6AD949041CE1E04000273466 /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD949031CE1E04000273466 /* API.m */; };
+		6AD949071CE1E08D00273466 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD949061CE1E08D00273466 /* SettingViewController.m */; };
+		6AD949091CE1EAE900273466 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD949081CE1EAE900273466 /* CoreLocation.framework */; };
+		6AD949131CE203B000273466 /* TweetTags+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD9490C1CE203B000273466 /* TweetTags+CoreDataProperties.m */; };
+		6AD949141CE203B000273466 /* TweetTags.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD9490E1CE203B000273466 /* TweetTags.m */; };
+		6AD949151CE203B000273466 /* Contacts+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD949101CE203B000273466 /* Contacts+CoreDataProperties.m */; };
+		6AD949161CE203B000273466 /* Contacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD949121CE203B000273466 /* Contacts.m */; };
+		6AD9491A1CE204D000273466 /* ModelContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD949191CE204D000273466 /* ModelContext.m */; };
+		6AD9491D1CE2093000273466 /* PQACustomAccessoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD9491C1CE2093000273466 /* PQACustomAccessoryController.m */; };
+		6AD949201CE20A2100273466 /* ContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD9491F1CE20A2100273466 /* ContactCell.m */; };
+		6AD949241CE20A3800273466 /* TagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD949231CE20A3800273466 /* TagCell.m */; };
+		6AD949271CE20C6C00273466 /* HospitalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD949261CE20C6C00273466 /* HospitalCell.m */; };
+		B908F759847BCAF1AE7EF2D3 /* libPods-CarePlus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2107FB3F9DB96BEE8264C143 /* libPods-CarePlus.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2107FB3F9DB96BEE8264C143 /* libPods-CarePlus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CarePlus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		25D9AE45100053569E196A28 /* Pods-CarePlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarePlus.release.xcconfig"; path = "Pods/Target Support Files/Pods-CarePlus/Pods-CarePlus.release.xcconfig"; sourceTree = "<group>"; };
 		6AD948DE1CE1DDB500273466 /* CarePlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarePlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AD948E21CE1DDB500273466 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6AD948E41CE1DDB500273466 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -28,6 +44,33 @@
 		6AD948F01CE1DDB500273466 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6AD948F31CE1DDB500273466 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6AD948F51CE1DDB500273466 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6AD948FF1CE1E01B00273466 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		6AD949001CE1E01B00273466 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		6AD949021CE1E04000273466 /* API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
+		6AD949031CE1E04000273466 /* API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = API.m; sourceTree = "<group>"; };
+		6AD949051CE1E08D00273466 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		6AD949061CE1E08D00273466 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		6AD949081CE1EAE900273466 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		6AD9490B1CE203B000273466 /* TweetTags+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TweetTags+CoreDataProperties.h"; sourceTree = "<group>"; };
+		6AD9490C1CE203B000273466 /* TweetTags+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TweetTags+CoreDataProperties.m"; sourceTree = "<group>"; };
+		6AD9490D1CE203B000273466 /* TweetTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetTags.h; sourceTree = "<group>"; };
+		6AD9490E1CE203B000273466 /* TweetTags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetTags.m; sourceTree = "<group>"; };
+		6AD9490F1CE203B000273466 /* Contacts+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Contacts+CoreDataProperties.h"; sourceTree = "<group>"; };
+		6AD949101CE203B000273466 /* Contacts+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Contacts+CoreDataProperties.m"; sourceTree = "<group>"; };
+		6AD949111CE203B000273466 /* Contacts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contacts.h; sourceTree = "<group>"; };
+		6AD949121CE203B000273466 /* Contacts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contacts.m; sourceTree = "<group>"; };
+		6AD949171CE2044C00273466 /* Models.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Models.h; sourceTree = "<group>"; };
+		6AD949181CE204D000273466 /* ModelContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelContext.h; sourceTree = "<group>"; };
+		6AD949191CE204D000273466 /* ModelContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelContext.m; sourceTree = "<group>"; };
+		6AD9491B1CE2093000273466 /* PQACustomAccessoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQACustomAccessoryController.h; sourceTree = "<group>"; };
+		6AD9491C1CE2093000273466 /* PQACustomAccessoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQACustomAccessoryController.m; sourceTree = "<group>"; };
+		6AD9491E1CE20A2100273466 /* ContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactCell.h; sourceTree = "<group>"; };
+		6AD9491F1CE20A2100273466 /* ContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactCell.m; sourceTree = "<group>"; };
+		6AD949221CE20A3800273466 /* TagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCell.h; sourceTree = "<group>"; };
+		6AD949231CE20A3800273466 /* TagCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCell.m; sourceTree = "<group>"; };
+		6AD949251CE20C6C00273466 /* HospitalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HospitalCell.h; sourceTree = "<group>"; };
+		6AD949261CE20C6C00273466 /* HospitalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HospitalCell.m; sourceTree = "<group>"; };
+		86842FFC45C9B3F95DDB28C8 /* Pods-CarePlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarePlus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CarePlus/Pods-CarePlus.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +78,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AD949091CE1EAE900273466 /* CoreLocation.framework in Frameworks */,
+				B908F759847BCAF1AE7EF2D3 /* libPods-CarePlus.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A3E1EBD1679F4C67A878129 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				86842FFC45C9B3F95DDB28C8 /* Pods-CarePlus.debug.xcconfig */,
+				25D9AE45100053569E196A28 /* Pods-CarePlus.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		6AD948D51CE1DDB500273466 = {
 			isa = PBXGroup;
 			children = (
+				6AD949081CE1EAE900273466 /* CoreLocation.framework */,
 				6AD948E01CE1DDB500273466 /* CarePlus */,
 				6AD948DF1CE1DDB500273466 /* Products */,
+				3A3E1EBD1679F4C67A878129 /* Pods */,
+				FA3F7E551B48F9529ADF5E7B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +121,10 @@
 				6AD948E51CE1DDB500273466 /* AppDelegate.m */,
 				6AD948E71CE1DDB500273466 /* ViewController.h */,
 				6AD948E81CE1DDB500273466 /* ViewController.m */,
+				6AD9491B1CE2093000273466 /* PQACustomAccessoryController.h */,
+				6AD9491C1CE2093000273466 /* PQACustomAccessoryController.m */,
+				6AD9490A1CE2039600273466 /* Models */,
+				6AD948FE1CE1E01B00273466 /* ViewControllers */,
 				6AD948EA1CE1DDB500273466 /* Main.storyboard */,
 				6AD948F01CE1DDB500273466 /* Assets.xcassets */,
 				6AD948F21CE1DDB500273466 /* LaunchScreen.storyboard */,
@@ -82,6 +143,51 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		6AD948FE1CE1E01B00273466 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6AD948FF1CE1E01B00273466 /* HomeViewController.h */,
+				6AD949001CE1E01B00273466 /* HomeViewController.m */,
+				6AD949021CE1E04000273466 /* API.h */,
+				6AD949031CE1E04000273466 /* API.m */,
+				6AD949051CE1E08D00273466 /* SettingViewController.h */,
+				6AD949061CE1E08D00273466 /* SettingViewController.m */,
+				6AD9491E1CE20A2100273466 /* ContactCell.h */,
+				6AD9491F1CE20A2100273466 /* ContactCell.m */,
+				6AD949221CE20A3800273466 /* TagCell.h */,
+				6AD949231CE20A3800273466 /* TagCell.m */,
+				6AD949251CE20C6C00273466 /* HospitalCell.h */,
+				6AD949261CE20C6C00273466 /* HospitalCell.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		6AD9490A1CE2039600273466 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6AD9490B1CE203B000273466 /* TweetTags+CoreDataProperties.h */,
+				6AD9490C1CE203B000273466 /* TweetTags+CoreDataProperties.m */,
+				6AD9490D1CE203B000273466 /* TweetTags.h */,
+				6AD9490E1CE203B000273466 /* TweetTags.m */,
+				6AD9490F1CE203B000273466 /* Contacts+CoreDataProperties.h */,
+				6AD949101CE203B000273466 /* Contacts+CoreDataProperties.m */,
+				6AD949111CE203B000273466 /* Contacts.h */,
+				6AD949121CE203B000273466 /* Contacts.m */,
+				6AD949171CE2044C00273466 /* Models.h */,
+				6AD949181CE204D000273466 /* ModelContext.h */,
+				6AD949191CE204D000273466 /* ModelContext.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FA3F7E551B48F9529ADF5E7B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2107FB3F9DB96BEE8264C143 /* libPods-CarePlus.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -89,9 +195,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6AD948F81CE1DDB500273466 /* Build configuration list for PBXNativeTarget "CarePlus" */;
 			buildPhases = (
+				2CC13E411C1F69554C76E151 /* Check Pods Manifest.lock */,
 				6AD948DA1CE1DDB500273466 /* Sources */,
 				6AD948DB1CE1DDB500273466 /* Frameworks */,
 				6AD948DC1CE1DDB500273466 /* Resources */,
+				354A6B0B2EF1134846C7C542 /* Embed Pods Frameworks */,
+				19261CD527BEAA14F30DAA68 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -147,15 +256,75 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		19261CD527BEAA14F30DAA68 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CarePlus/Pods-CarePlus-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2CC13E411C1F69554C76E151 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		354A6B0B2EF1134846C7C542 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CarePlus/Pods-CarePlus-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6AD948DA1CE1DDB500273466 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AD949241CE20A3800273466 /* TagCell.m in Sources */,
+				6AD949151CE203B000273466 /* Contacts+CoreDataProperties.m in Sources */,
+				6AD949141CE203B000273466 /* TweetTags.m in Sources */,
+				6AD949041CE1E04000273466 /* API.m in Sources */,
 				6AD948EF1CE1DDB500273466 /* CarePlus.xcdatamodeld in Sources */,
 				6AD948E91CE1DDB500273466 /* ViewController.m in Sources */,
+				6AD9491D1CE2093000273466 /* PQACustomAccessoryController.m in Sources */,
+				6AD949071CE1E08D00273466 /* SettingViewController.m in Sources */,
+				6AD949131CE203B000273466 /* TweetTags+CoreDataProperties.m in Sources */,
+				6AD9491A1CE204D000273466 /* ModelContext.m in Sources */,
 				6AD948E61CE1DDB500273466 /* AppDelegate.m in Sources */,
 				6AD948E31CE1DDB500273466 /* main.m in Sources */,
+				6AD949011CE1E01B00273466 /* HomeViewController.m in Sources */,
+				6AD949271CE20C6C00273466 /* HospitalCell.m in Sources */,
+				6AD949201CE20A2100273466 /* ContactCell.m in Sources */,
+				6AD949161CE203B000273466 /* Contacts.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,22 +434,24 @@
 		};
 		6AD948F91CE1DDB500273466 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86842FFC45C9B3F95DDB28C8 /* Pods-CarePlus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CarePlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zoozoo.CarePlus;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rohde-schwarz.CarePlus";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
 		6AD948FA1CE1DDB500273466 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25D9AE45100053569E196A28 /* Pods-CarePlus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CarePlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zoozoo.CarePlus;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rohde-schwarz.CarePlus";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -304,6 +475,7 @@
 				6AD948FA1CE1DDB500273466 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

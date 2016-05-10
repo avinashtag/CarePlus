@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AFNetworking.h>
 
 @interface API : NSObject
 
+- (void) test;
 @end

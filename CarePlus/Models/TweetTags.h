@@ -15,6 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 // Insert code here to declare functionality of your managed object subclass
 
+
++ (NSArray *) allTags;
+- (void) save;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

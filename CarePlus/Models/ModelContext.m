@@ -19,7 +19,7 @@
 
 
 
-ModelContext* sharedContext(){
++(ModelContext*) sharedContext{
     static dispatch_once_t dispatchOnce = 0;
     static ModelContext *sharedContext;
     
@@ -34,7 +34,7 @@ ModelContext* sharedContext(){
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"PQAApp" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"CarePlus" withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
@@ -49,7 +49,7 @@ ModelContext* sharedContext(){
     
     
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    NSURL *storeURL = [[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject] URLByAppendingPathComponent:@"PQAApp.sqlite"];
+    NSURL *storeURL = [[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject] URLByAppendingPathComponent:@"CarePlus.sqlite"];
     NSError *error = nil;
 
     NSDictionary *fileAttributes = [NSDictionary dictionaryWithObject:NSFileProtectionComplete forKey:NSFileProtectionKey];
@@ -99,41 +99,15 @@ ModelContext* sharedContext(){
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
             // Replace this implementation with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            DDLogError(@"Unresolved error %@, %@", error, [error userInfo]);
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
         }
         else{
-            DDLogInfo(@"** Value saved in database **");
+            NSLog(@"** Value saved in database **");
         }
     }
 }
 
-
--(void) configureDatabase{
-    
-    Device *device = (Device *)[self fetchEntity:[Device class]];
-    if (!device) {
-        device = (Device *)[self insertEntity:[Device class]];
-        [self insertEntity:[Battery class]];
-        [self insertEntity:[Expert class]];
-        [self insertEntity:[FTP class]];
-        [self insertEntity:[General class]];
-        [self insertEntity:[Iperf class]];
-        [self insertEntity:[Ping class]];
-    }
-    FTP *ftp = (FTP *)[self fetchEntity:[FTP class]];
-    if (!ftp) {
-        ftp = (FTP *)[self insertEntity:[FTP class]];
-        [self insertEntity:[Battery class]];
-        [self insertEntity:[General class]];
-        [self insertEntity:[Expert class]];
-        [self insertEntity:[Iperf class]];
-        [self insertEntity:[Ping class]];
-    }
-    [self saveContext];
-    
-//    Task* newTask = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:self.managedObjectContext];
-}
 
 - (NSManagedObject *) insertEntity:(Class)classs{
     NSManagedObject *managedObject = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass(classs) inManagedObjectContext:[self managedObjectContext]];

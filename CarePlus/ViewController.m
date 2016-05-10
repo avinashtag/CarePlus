@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "API.h"
 
 @interface ViewController ()
 
@@ -24,4 +25,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    API *api = [[API alloc]init];
+    [api test];
+}
 @end

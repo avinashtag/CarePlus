@@ -7,9 +7,22 @@
 //
 
 #import "Contacts.h"
+#import "ModelContext.h"
+
 
 @implementation Contacts
 
 // Insert code here to add functionality to your managed object subclass
+
+
++ (NSArray *) allContacts{
+    return [[ModelContext sharedContext] fetchEntities:[self class]];
+}
+
+
+- (void) save{
+    [[ModelContext sharedContext]saveContext];
+}
+
 
 @end
