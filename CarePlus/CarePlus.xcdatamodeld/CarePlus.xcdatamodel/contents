@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15B42" minimumToolsVersion="Automatic">
+    <entity name="BiologicalSex" representedClassName="BiologicalSex" syncable="YES">
+        <attribute name="sexFemale" optional="YES" attributeType="Integer 16" defaultValueString="1" syncable="YES"/>
+        <attribute name="sexMale" optional="YES" attributeType="Integer 16" defaultValueString="2" syncable="YES"/>
+        <attribute name="sexNotSet" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="sexOther" optional="YES" attributeType="Integer 16" defaultValueString="3" syncable="YES"/>
+    </entity>
+    <entity name="Blood" representedClassName="Blood" syncable="YES">
+        <attribute name="abNegative" optional="YES" attributeType="Integer 16" defaultValueString="6" syncable="YES"/>
+        <attribute name="abPositive" optional="YES" attributeType="Integer 16" defaultValueString="5" syncable="YES"/>
+        <attribute name="aNegative" optional="YES" attributeType="Integer 16" defaultValueString="2" syncable="YES"/>
+        <attribute name="aPositive" optional="YES" attributeType="Integer 16" defaultValueString="1" syncable="YES"/>
+        <attribute name="bNegative" optional="YES" attributeType="Integer 16" defaultValueString="4" syncable="YES"/>
+        <attribute name="bPositive" optional="YES" attributeType="Integer 16" defaultValueString="3" syncable="YES"/>
+        <attribute name="notSet" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="oNegative" optional="YES" attributeType="Integer 16" defaultValueString="8" syncable="YES"/>
+        <attribute name="oPositive" optional="YES" attributeType="Integer 16" defaultValueString="7" syncable="YES"/>
+    </entity>
     <entity name="Contacts" representedClassName="Contacts" syncable="YES">
         <attribute name="mobile" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="relation" optional="YES" attributeType="String" syncable="YES"/>
@@ -9,8 +26,17 @@
     <entity name="TweetTags" representedClassName="TweetTags" syncable="YES">
         <attribute name="tag" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="biologicalSex" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="birthDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="bloodType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Contacts" positionX="-63" positionY="-18" width="128" height="105"/>
         <element name="TweetTags" positionX="-54" positionY="18" width="128" height="60"/>
+        <element name="User" positionX="-36" positionY="27" width="128" height="105"/>
+        <element name="Blood" positionX="-18" positionY="63" width="128" height="180"/>
+        <element name="BiologicalSex" positionX="0" positionY="126" width="128" height="105"/>
     </elements>
 </model>

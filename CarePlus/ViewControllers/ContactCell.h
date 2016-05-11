@@ -10,4 +10,8 @@
 
 @interface ContactCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UITextField *name;
+@property (weak, nonatomic) IBOutlet UITextField *mobile;
+@property (weak, nonatomic) IBOutlet UITextField *tweetTag;
+@property (weak, nonatomic) IBOutlet UITextField *relation;
 @end

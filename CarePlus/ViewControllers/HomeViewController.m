@@ -10,6 +10,7 @@
 
 @interface HomeViewController ()
 
+@property (weak, nonatomic) IBOutlet UITableView *hospitalsTable;
 @end
 
 @implementation HomeViewController

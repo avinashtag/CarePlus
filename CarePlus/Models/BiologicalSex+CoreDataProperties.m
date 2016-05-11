@@ -1,5 +1,5 @@
 //
-//  TweetTags+CoreDataProperties.h
+//  BiologicalSex+CoreDataProperties.m
 //  CarePlus
 //
 //  Created by Avinash Tag on 11/05/16.
@@ -9,14 +9,13 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "TweetTags.h"
+#import "BiologicalSex+CoreDataProperties.h"
 
-NS_ASSUME_NONNULL_BEGIN
+@implementation BiologicalSex (CoreDataProperties)
 
-@interface TweetTags (CoreDataProperties)
-
-@property (nullable, nonatomic, retain) NSString *tag;
+@dynamic sexNotSet;
+@dynamic sexFemale;
+@dynamic sexMale;
+@dynamic sexOther;
 
 @end
-
-NS_ASSUME_NONNULL_END

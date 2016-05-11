@@ -23,10 +23,10 @@
             </objects>
             <point key="canvasLocation" x="113" y="424"/>
         </scene>
-        <!--View Controller-->
+        <!--Setting View Controller-->
         <scene sceneID="eEc-Kk-6Sv">
             <objects>
-                <viewController id="3Ln-fP-dM8" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingViewController" id="3Ln-fP-dM8" customClass="SettingViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rhO-MH-Pkk"/>
                         <viewControllerLayoutGuide type="bottom" id="hRL-Ol-nJ8"/>
@@ -41,6 +41,9 @@
                                     <segment title="Contacts"/>
                                     <segment title="Tags"/>
                                 </segments>
+                                <connections>
+                                    <action selector="switchSegment:" destination="3Ln-fP-dM8" eventType="valueChanged" id="VD5-VN-tY0"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="206" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zg2-jF-Kzs">
                                 <rect key="frame" x="0.0" y="93" width="320" height="476"/>
@@ -53,28 +56,34 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="170"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pto-82-MsG">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pto-82-MsG">
                                                     <rect key="frame" x="5" y="10" width="310" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mobile" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bhj-JW-tra">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mobile" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bhj-JW-tra">
                                                     <rect key="frame" x="5" y="50" width="310" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                 </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tweet Tag (Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UQS-gg-14z">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tweet Tag (Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UQS-gg-14z">
                                                     <rect key="frame" x="5" y="90" width="310" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Relation" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u3C-Dv-Fj1">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Relation" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u3C-Dv-Fj1">
                                                     <rect key="frame" x="5" y="130" width="310" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="mobile" destination="bhj-JW-tra" id="pR5-T6-JBz"/>
+                                            <outlet property="name" destination="pto-82-MsG" id="eib-GO-qcn"/>
+                                            <outlet property="relation" destination="u3C-Dv-Fj1" id="pUz-Cx-5dE"/>
+                                            <outlet property="tweetTag" destination="UQS-gg-14z" id="34D-JO-bYy"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="TagCellIdentifier" rowHeight="44" id="wvW-Ld-hGc" customClass="TagCell">
                                         <rect key="frame" x="0.0" y="199" width="320" height="44"/>
@@ -91,22 +100,33 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="tagTitle" destination="icX-Ec-17E" id="Ypi-gN-mwJ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="3Ln-fP-dM8" id="1YX-Fj-Yjg"/>
+                                    <outlet property="delegate" destination="3Ln-fP-dM8" id="9wl-fh-3l3"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="sement" destination="qzW-dU-iaI" id="rU7-Uo-Rbj"/>
+                        <outlet property="tableView" destination="zg2-jF-Kzs" id="7zM-7J-1X8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mTQ-wr-j0r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="685" y="408"/>
         </scene>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="TT7-QO-Thi">
             <objects>
-                <viewController id="bTP-E4-NkT" sceneMemberID="viewController">
+                <viewController id="bTP-E4-NkT" customClass="HomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aye-pW-3PK"/>
                         <viewControllerLayoutGuide type="bottom" id="7xY-eM-crz"/>
@@ -119,7 +139,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactCellIdentifier" rowHeight="171" id="Wac-ht-U99" customClass="ContactCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactCellIdentifier" rowHeight="171" id="Wac-ht-U99" customClass="HospitalCell">
                                         <rect key="frame" x="0.0" y="28" width="320" height="171"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wac-ht-U99" id="hd7-VU-eEG">
@@ -142,16 +162,30 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0e-4i-zvk">
                                                     <rect key="frame" x="266" y="3" width="46" height="30"/>
                                                     <state key="normal" title="Call"/>
+                                                    <connections>
+                                                        <action selector="doCallHospital:" destination="Wac-ht-U99" eventType="touchUpInside" id="UDH-4E-BzO"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="hopitalDescription" destination="h7p-84-qzt" id="jRn-vy-imz"/>
+                                            <outlet property="hospitalName" destination="LJH-Mu-dbL" id="Z0f-0p-NBU"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="bTP-E4-NkT" id="cVi-JX-zDt"/>
+                                    <outlet property="delegate" destination="bTP-E4-NkT" id="d7o-RT-hpw"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="hospitalsTable" destination="zXI-Av-wTi" id="I5f-YE-bmO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rQx-bu-PBK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -8,6 +8,20 @@
 
 #import "HospitalCell.h"
 
+@interface HospitalCell ()
+
+@property (nonatomic, copy) Call callCompletion;
+@end
+
 @implementation HospitalCell
 
+- (IBAction)doCallHospital:(UIButton *)sender {
+    if (_callCompletion) {
+        _callCompletion();
+    }
+}
+
+- (void)callingHospital:(Call)completion{
+    _callCompletion = completion;
+}
 @end

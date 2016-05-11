@@ -10,4 +10,5 @@
 
 @interface TagCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *tagTitle;
 @end

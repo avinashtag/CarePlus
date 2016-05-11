@@ -9,5 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface HospitalCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *hospitalName;
+@property (weak, nonatomic) IBOutlet UITextView *hopitalDescription;
 
+
+typedef void(^Call)();
+- (IBAction)doCallHospital:(UIButton *)sender;
+
+- (void) callingHospital:(Call)completion;
 @end

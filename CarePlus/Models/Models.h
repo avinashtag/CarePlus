@@ -11,6 +11,9 @@
 
 #import "TweetTags.h"
 #import "Contacts.h"
+#import "User.h"
+#import "Blood.h"
+#import "BiologicalSex.h"
 #import "ModelContext.h"
 
 #endif /* Models_h */

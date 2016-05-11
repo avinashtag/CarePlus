@@ -1,5 +1,5 @@
 //
-//  TweetTags+CoreDataProperties.h
+//  User+CoreDataProperties.h
 //  CarePlus
 //
 //  Created by Avinash Tag on 11/05/16.
@@ -9,13 +9,16 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "TweetTags.h"
+#import "User.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TweetTags (CoreDataProperties)
+@interface User (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSString *tag;
+@property (nullable, nonatomic, retain) NSString *name;
+@property (nullable, nonatomic, retain) NSDate *birthDate;
+@property (nullable, nonatomic, retain) NSNumber *biologicalSex;
+@property (nullable, nonatomic, retain) NSNumber *bloodType;
 
 @end
 
