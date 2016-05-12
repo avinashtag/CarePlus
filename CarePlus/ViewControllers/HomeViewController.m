@@ -7,10 +7,19 @@
 //
 
 #import "HomeViewController.h"
+#import "HospitalCell.h"
+#import "Models.h"
+#import "API.h"
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <MessageUI/MessageUI.h>
+#import "AppDelegate.h"
 
-@interface HomeViewController ()
+
+@interface HomeViewController ()<MFMessageComposeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *hospitalsTable;
+@property (strong, nonatomic) NSArray *dataSource;
+@property (strong, nonatomic) API *api;
 @end
 
 @implementation HomeViewController
@@ -18,6 +27,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _api = [[API alloc]init];
+    [_api storeHealth];
+    [_api getHopitals:^(NSArray *response) {
+       
+        _dataSource = response;
+        [self.hospitalsTable reloadData];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,5 +50,81 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return  _dataSource.count;
+}
+
+// Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
+// Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    static NSString *identifier = @"ContactCellIdentifier";
+    HospitalCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+
+    
+    return cell;
+}
+
+
+- (IBAction)panicPressed:(id)sender{
+    
+    __block NSMutableArray *recipient = [[NSMutableArray alloc]init];
+    NSArray *temp = [[ModelContext sharedContext] fetchEntities:[Contacts class]];
+    if (temp.count) {
+        
+        [temp enumerateObjectsUsingBlock:^(Contacts  *contact, NSUInteger idx, BOOL * _Nonnull stop) {
+            [recipient addObject:contact.mobile];
+        }];
+        
+        CLLocationCoordinate2D cordinate = [(AppDelegate *)[UIApplication sharedApplication].delegate coordinate];
+        NSString *message = [[NSString alloc]initWithFormat:@"Please Help Me !!! Location: Lat/Long: %f/%f", cordinate.latitude, cordinate.longitude];
+        [ self sendSMS:message recipientList:temp];
+
+    }
+    else{
+        [_api doTweet];
+    }
+    
+}
+
+
+
+- (void)sendSMS:(NSString *)bodyOfMessage recipientList:(NSArray *)recipients
+{
+    MFMessageComposeViewController *controller = [[MFMessageComposeViewController alloc] init];
+    if([MFMessageComposeViewController canSendText])
+    {
+        controller.body = bodyOfMessage;
+        controller.recipients = recipients;
+        controller.messageComposeDelegate = self;
+        [self presentViewController:controller animated:YES completion:nil];
+    }
+}
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [_api doTweet];
+
+    if (result == MessageComposeResultCancelled){
+        NSLog(@"Message cancelled");
+        
+    }
+    else if (result == MessageComposeResultSent){
+     
+        NSLog(@"Message sent");
+    }
+    else{
+        NSLog(@"Message failed");
+    }
+
+}
+
 
 @end

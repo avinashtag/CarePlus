@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A28D9311CE47E65002B2AD8 /* TagsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A28D9301CE47E65002B2AD8 /* TagsController.m */; };
+		6A28D9331CE49DA3002B2AD8 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A28D9321CE49DA3002B2AD8 /* MobileCoreServices.framework */; };
+		6A28D9351CE4A566002B2AD8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A28D9341CE4A566002B2AD8 /* MessageUI.framework */; };
 		6AD948E31CE1DDB500273466 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD948E21CE1DDB500273466 /* main.m */; };
 		6AD948E61CE1DDB500273466 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD948E51CE1DDB500273466 /* AppDelegate.m */; };
 		6AD948E91CE1DDB500273466 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD948E81CE1DDB500273466 /* ViewController.m */; };
@@ -35,12 +38,18 @@
 		6AD949451CE34FA600273466 /* Contacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD949441CE34FA600273466 /* Contacts.m */; };
 		6AD949471CE353CE00273466 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD949461CE353CE00273466 /* HealthKit.framework */; };
 		6AD9494A1CE3578F00273466 /* NSDate+ZDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD949491CE3578F00273466 /* NSDate+ZDate.m */; };
+		6AD9494D1CE45E9B00273466 /* ContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD9494C1CE45E9B00273466 /* ContactsController.m */; };
+		6AD949511CE468EE00273466 /* NSString+TString.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD9494F1CE468EE00273466 /* NSString+TString.m */; };
 		B908F759847BCAF1AE7EF2D3 /* libPods-CarePlus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2107FB3F9DB96BEE8264C143 /* libPods-CarePlus.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2107FB3F9DB96BEE8264C143 /* libPods-CarePlus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CarePlus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25D9AE45100053569E196A28 /* Pods-CarePlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarePlus.release.xcconfig"; path = "Pods/Target Support Files/Pods-CarePlus/Pods-CarePlus.release.xcconfig"; sourceTree = "<group>"; };
+		6A28D92F1CE47E65002B2AD8 /* TagsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagsController.h; sourceTree = "<group>"; };
+		6A28D9301CE47E65002B2AD8 /* TagsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagsController.m; sourceTree = "<group>"; };
+		6A28D9321CE49DA3002B2AD8 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		6A28D9341CE4A566002B2AD8 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		6AD948DE1CE1DDB500273466 /* CarePlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarePlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AD948E21CE1DDB500273466 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6AD948E41CE1DDB500273466 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -93,6 +102,10 @@
 		6AD949461CE353CE00273466 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		6AD949481CE3578F00273466 /* NSDate+ZDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+ZDate.h"; sourceTree = "<group>"; };
 		6AD949491CE3578F00273466 /* NSDate+ZDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ZDate.m"; sourceTree = "<group>"; };
+		6AD9494B1CE45E9B00273466 /* ContactsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsController.h; sourceTree = "<group>"; };
+		6AD9494C1CE45E9B00273466 /* ContactsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsController.m; sourceTree = "<group>"; };
+		6AD9494E1CE468EE00273466 /* NSString+TString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TString.h"; sourceTree = "<group>"; };
+		6AD9494F1CE468EE00273466 /* NSString+TString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TString.m"; sourceTree = "<group>"; };
 		86842FFC45C9B3F95DDB28C8 /* Pods-CarePlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarePlus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CarePlus/Pods-CarePlus.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -101,6 +114,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A28D9351CE4A566002B2AD8 /* MessageUI.framework in Frameworks */,
+				6A28D9331CE49DA3002B2AD8 /* MobileCoreServices.framework in Frameworks */,
 				6AD949471CE353CE00273466 /* HealthKit.framework in Frameworks */,
 				6AD949091CE1EAE900273466 /* CoreLocation.framework in Frameworks */,
 				B908F759847BCAF1AE7EF2D3 /* libPods-CarePlus.a in Frameworks */,
@@ -170,6 +185,8 @@
 		6AD948FE1CE1E01B00273466 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6AD9494E1CE468EE00273466 /* NSString+TString.h */,
+				6AD9494F1CE468EE00273466 /* NSString+TString.m */,
 				6AD949481CE3578F00273466 /* NSDate+ZDate.h */,
 				6AD949491CE3578F00273466 /* NSDate+ZDate.m */,
 				6AD948FF1CE1E01B00273466 /* HomeViewController.h */,
@@ -178,6 +195,10 @@
 				6AD949031CE1E04000273466 /* API.m */,
 				6AD949051CE1E08D00273466 /* SettingViewController.h */,
 				6AD949061CE1E08D00273466 /* SettingViewController.m */,
+				6AD9494B1CE45E9B00273466 /* ContactsController.h */,
+				6AD9494C1CE45E9B00273466 /* ContactsController.m */,
+				6A28D92F1CE47E65002B2AD8 /* TagsController.h */,
+				6A28D9301CE47E65002B2AD8 /* TagsController.m */,
 				6AD9491E1CE20A2100273466 /* ContactCell.h */,
 				6AD9491F1CE20A2100273466 /* ContactCell.m */,
 				6AD949221CE20A3800273466 /* TagCell.h */,
@@ -221,6 +242,8 @@
 		FA3F7E551B48F9529ADF5E7B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6A28D9341CE4A566002B2AD8 /* MessageUI.framework */,
+				6A28D9321CE49DA3002B2AD8 /* MobileCoreServices.framework */,
 				6AD949461CE353CE00273466 /* HealthKit.framework */,
 				2107FB3F9DB96BEE8264C143 /* libPods-CarePlus.a */,
 			);
@@ -350,6 +373,7 @@
 			files = (
 				6AD949391CE34F0F00273466 /* User+CoreDataProperties.m in Sources */,
 				6AD9493B1CE34F0F00273466 /* BiologicalSex+CoreDataProperties.m in Sources */,
+				6AD9494D1CE45E9B00273466 /* ContactsController.m in Sources */,
 				6AD949241CE20A3800273466 /* TagCell.m in Sources */,
 				6AD949041CE1E04000273466 /* API.m in Sources */,
 				6AD948EF1CE1DDB500273466 /* CarePlus.xcdatamodeld in Sources */,
@@ -364,8 +388,10 @@
 				6AD9491A1CE204D000273466 /* ModelContext.m in Sources */,
 				6AD9494A1CE3578F00273466 /* NSDate+ZDate.m in Sources */,
 				6AD9493E1CE34F0F00273466 /* Blood+CoreDataProperties.m in Sources */,
+				6A28D9311CE47E65002B2AD8 /* TagsController.m in Sources */,
 				6AD948E61CE1DDB500273466 /* AppDelegate.m in Sources */,
 				6AD949421CE34F9300273466 /* TweetTags.m in Sources */,
+				6AD949511CE468EE00273466 /* NSString+TString.m in Sources */,
 				6AD948E31CE1DDB500273466 /* main.m in Sources */,
 				6AD9493D1CE34F0F00273466 /* Contacts+CoreDataProperties.m in Sources */,
 				6AD949011CE1E01B00273466 /* HomeViewController.m in Sources */,

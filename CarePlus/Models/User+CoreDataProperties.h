@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.h
 //  CarePlus
 //
-//  Created by Avinash Tag on 11/05/16.
+//  Created by Avinash Tag on 12/05/16.
 //  Copyright © 2016 ZooZoo. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -15,10 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface User (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSString *name;
-@property (nullable, nonatomic, retain) NSDate *birthDate;
 @property (nullable, nonatomic, retain) NSNumber *biologicalSex;
+@property (nullable, nonatomic, retain) NSDate *birthDate;
 @property (nullable, nonatomic, retain) NSNumber *bloodType;
+@property (nullable, nonatomic, retain) NSString *name;
+@property (nullable, nonatomic, retain) NSString *mobile;
 
 @end
 

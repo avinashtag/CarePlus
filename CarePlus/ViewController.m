@@ -30,6 +30,5 @@
     [super viewDidAppear:animated];
     
     API *api = [[API alloc]init];
-    [api test];
 }
 @end

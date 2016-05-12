@@ -12,6 +12,7 @@
 #import "Models.h"
 #import <Social/Social.h>
 #import "NSDate+ZDate.h"
+#import <MobileCoreServices/MobileCoreServices.h>
 
 #define radius 20
 #define googleType @"hospital"
@@ -27,7 +28,7 @@
 
 
 
-- (void) test{
+- (void) getHopitals:(void(^)(NSArray *response))completion{
     
     
     AppDelegate *appdelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -42,13 +43,21 @@
     NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
         if (error) {
             NSLog(@"Error: %@", error);
+            completion(nil);
         } else {
+            completion(responseObject);
             NSLog(@"%@ %@", response, responseObject);
         }
     }];
     [dataTask resume];
 }
 
+//
+//extern NSString* CTSettingCopyMyPhoneNumber();
+//
+//+(NSString *) contactNumber{
+//    return CTSettingCopyMyPhoneNumber();
+//}
 
 
 - (void) storeHealth{
@@ -74,9 +83,11 @@
             }
             else if (!user) {
                 user = (User *)[[ModelContext sharedContext] insertEntity:[User class]];
+//                user.mobile = [API contactNumber ];
                 user.birthDate = [self readBirthDate];
                 user.bloodType = @([self readBloodGroup]);
                 user.biologicalSex = @([self readsex]);
+                [user save];
             }
         }
     }];
@@ -114,17 +125,18 @@
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
         UIViewController *controller = [[[UIApplication sharedApplication].delegate window] rootViewController];
         twitterSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-        [twitterSheet setInitialText:@"Hello"];
+        [twitterSheet setInitialText:[self tweetText]];
         [controller presentViewController:twitterSheet animated:YES completion:nil];
     }
 
 }
 
 
-- (void) tweetText{
+- (NSString *) tweetText{
     NSMutableArray *items = [[NSMutableArray alloc]init];
     User *user = (User *)[[ModelContext sharedContext]fetchEntity:[User class]];
     [items addObject:[NSString stringWithFormat:@"%@",user.name]];
+    [items addObject:[NSString stringWithFormat:@"%@",user.mobile]];
     [items addObject:[NSString stringWithFormat:@"DOB: %@",[user.birthDate dateStringInFormat:@"dd-MMM-yyyy"]]];
     switch (user.bloodType.integerValue) {
         case HKBloodTypeNotSet:
@@ -188,7 +200,22 @@
 
     
     
+    //FNF
+    [items addObject:@"Emergency Contacts"];
+
+    NSArray *fnf = [[ModelContext sharedContext] fetchEntities:[Contacts class]];
+    [fnf enumerateObjectsUsingBlock:^(Contacts  *contact, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        [items addObject:contact.userName];
+        [items addObject:[NSString stringWithFormat:@"%@",contact.mobile]];
+    }];
+    
+    
+    return [items componentsJoinedByString:@", "];
 }
+
+
+
 
 - (void) save{
     

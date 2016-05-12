@@ -14,6 +14,7 @@
 @interface API : NSObject
 @property (nonatomic, strong, readonly) HKHealthStore *healthStore;
 
-- (void) test;
+- (void) getHopitals:(void(^)(NSArray *response))completion;
 - (void) storeHealth;
+- (void) doTweet;
 @end

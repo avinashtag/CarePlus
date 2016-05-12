@@ -7,9 +7,14 @@
 //
 
 #import "User.h"
+#import "Models.h"
 
 @implementation User
 
 // Insert code here to add functionality to your managed object subclass
 
+
+- (void) save{
+    [[ModelContext sharedContext]saveContext];
+}
 @end
