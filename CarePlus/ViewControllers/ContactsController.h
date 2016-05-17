@@ -14,4 +14,5 @@
 
 @property (nonnull, strong) PQACustomAccessoryController *accessory;
 
+-(void)saveContacts;
 @end

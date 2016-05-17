@@ -23,6 +23,7 @@ typedef NS_ENUM(NSUInteger, SettingSegment) {
 @property (weak, nonatomic) IBOutlet UISegmentedControl *sement;
 
 @property (nonnull, strong) PQACustomAccessoryController *accessory;
+@property (nonnull, strong) ContactsController *contactsController;
 @property (weak, nonatomic) IBOutlet UIView *contactContainer;
 @property (weak, nonatomic) IBOutlet UIView *tweetController;
 
@@ -55,11 +56,14 @@ typedef NS_ENUM(NSUInteger, SettingSegment) {
     }
     else if ( [segue.destinationViewController isKindOfClass:[ContactsController class]]){
         
-        ContactsController *controller = segue.destinationViewController;
-        [controller setAccessory:self.accessory];
+        _contactsController = segue.destinationViewController;
+        [_contactsController setAccessory:self.accessory];
     }
 }
 
+- (IBAction)save:(id)sender {
+    [_contactsController saveContacts];
+}
 
 - (NSArray *)fetchTags{
     return [[ModelContext sharedContext] fetchEntities:[TweetTags class]];

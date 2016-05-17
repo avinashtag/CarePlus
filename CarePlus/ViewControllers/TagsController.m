@@ -50,9 +50,14 @@
     [alert addAction: cancel];
     [alert addAction:addTag];
     
+    [self presentViewController:alert animated:YES completion:nil];
+    
 }
 
-
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    return _header;
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     return  _dataSource.count;

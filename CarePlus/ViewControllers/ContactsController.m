@@ -177,7 +177,7 @@
         
         [self saveContact:_fnf5 index:4];
     }
-
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

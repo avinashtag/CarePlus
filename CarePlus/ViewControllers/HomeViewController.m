@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *hospitalsTable;
 @property (strong, nonatomic) NSArray *dataSource;
 @property (strong, nonatomic) API *api;
+@property (strong, nonatomic) IBOutlet UIView *customNav;
 @end
 
 @implementation HomeViewController
@@ -34,6 +35,13 @@
         _dataSource = response;
         [self.hospitalsTable reloadData];
     }];
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+//    [self.navigationController.navigationBar addSubview:_customNav];
+
 }
 
 - (void)didReceiveMemoryWarning {
