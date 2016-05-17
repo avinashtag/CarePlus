@@ -10,7 +10,7 @@
 
 @interface HospitalCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *hospitalName;
-@property (weak, nonatomic) IBOutlet UITextView *hopitalDescription;
+@property (weak, nonatomic) IBOutlet UILabel *hopitalDescription;
 
 
 typedef void(^Call)();

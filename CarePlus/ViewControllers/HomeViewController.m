@@ -14,6 +14,7 @@
 #import <MessageUI/MessageUI.h>
 #import "AppDelegate.h"
 #import "DataModels.h"
+#import <MBProgressHUD.h>
 
 
 @interface HomeViewController ()<MFMessageComposeViewControllerDelegate>
@@ -29,12 +30,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+    self.hospitalsTable.rowHeight = UITableViewAutomaticDimension;
+    self.hospitalsTable.estimatedRowHeight = 61.0;
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES ];
     _api = [[API alloc]init];
     [_api storeHealth];
     [_api getHopitals:^(NSArray *response) {
        
         _dataSource = response;
         [self.hospitalsTable reloadData];
+        [MBProgressHUD hideHUDForView:self.view animated:YES ];
+
     }];
     
 }
@@ -80,7 +89,6 @@
 
     [cell callingHospital:^{
         
-//        NSString *phoneNumber = [@"tel://" stringByAppendingString:mymobileNO.titleLabel.text];
         NSString *phoneNumber = [@"tel://" stringByAppendingString:result.formattedPhoneNumber];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
     }];
@@ -96,6 +104,7 @@
     [descArray addObject:[NSString stringWithFormat:@"Types: %@",[result.types componentsJoinedByString:@","]]];
     
     [cell.hopitalDescription setText:[descArray componentsJoinedByString:@"\n"]];
+    [cell.hopitalDescription sizeToFit];
     return cell;
 }
 

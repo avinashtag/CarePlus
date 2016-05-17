@@ -5,6 +5,6 @@
 target 'CarePlus' do
 
 pod 'AFNetworking', '~> 3.1'
-
+pod 'MBProgressHUD', '~> 0.9'
 end
 
