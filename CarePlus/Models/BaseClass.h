@@ -7,14 +7,13 @@
 
 #import <Foundation/Foundation.h>
 
-
+@class Result;
 
 @interface BaseClass : NSObject <NSCoding, NSCopying>
 
-@property (nonatomic, strong) NSString *status;
-@property (nonatomic, strong) NSArray *results;
-@property (nonatomic, strong) NSString *nextPageToken;
 @property (nonatomic, strong) NSArray *htmlAttributions;
+@property (nonatomic, strong) Result *result;
+@property (nonatomic, strong) NSString *status;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

@@ -15,7 +15,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "BaseClass.h"
 
-#define radius 20
+#define radius 5000
 #define googleType @"hospital"
 #define kGOOGLE_API_KEY @"AIzaSyBvYMlqzKaL-IQj5pUEfeQTvWUmuT6UeCo"
 
@@ -63,10 +63,33 @@
             NSLog(@"Error: %@", error);
             completion(nil);
         } else {
+            NSArray* placeIds =  [[responseObject valueForKey:@"results"] valueForKeyPath:@"place_id"];
             
-            BaseClass *base = [BaseClass modelObjectWithDictionary:responseObject];
-            completion(base.results);
-            NSLog(@"%@ %@", response, responseObject);
+            __block NSMutableArray *results = [[NSMutableArray alloc] init];
+            [placeIds enumerateObjectsUsingBlock:^(NSString *placeId, NSUInteger idx, BOOL * _Nonnull stop) {
+           
+                NSString *urlstringDetail = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/details/json?placeid=%@&key=%@", placeId, kGOOGLE_API_KEY];
+      
+                NSURL *URLD = [NSURL URLWithString:urlstringDetail];
+                NSURLRequest *requests = [NSURLRequest requestWithURL:URLD];
+                NSURLSessionDataTask *dataTasks = [manager dataTaskWithRequest:requests completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+                    if (!error) {
+                        BaseClass *base = [BaseClass modelObjectWithDictionary:responseObject];
+                        [results addObject:base.result];
+                    }
+                    if (results.count == placeIds.count) {
+                        completion(results);
+                        
+                    }
+
+                }];
+                
+                [dataTasks resume];
+                
+
+            }];
+            
+//            BaseClass *base = [BaseClass modelObjectWithDictionary:responseObject];
         }
     }];
     [dataTask resume];
@@ -89,42 +112,48 @@
     }
     
     
-    NSArray *readTypes = @[[HKObjectType characteristicTypeForIdentifier:HKCharacteristicTypeIdentifierDateOfBirth],[HKObjectType characteristicTypeForIdentifier:HKCharacteristicTypeIdentifierBloodType]];
+    NSSet *readTypes = [NSSet setWithObjects:
+                          [HKObjectType characteristicTypeForIdentifier:HKCharacteristicTypeIdentifierDateOfBirth],
+                          [HKObjectType characteristicTypeForIdentifier:HKCharacteristicTypeIdentifierBiologicalSex],
+                          [HKObjectType characteristicTypeForIdentifier:HKCharacteristicTypeIdentifierBloodType],
+                          nil];
     
-    NSArray *writeTypes = @[[HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMass]];
     __block User *user = (User *)[[ModelContext sharedContext]fetchEntity:[User class]];
-    
-    
-    if ([self.healthStore authorizationStatusForType:[HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMass]]== HKAuthorizationStatusNotDetermined) {
-        
-        
-        [self.healthStore requestAuthorizationToShareTypes:[NSSet setWithArray:readTypes] readTypes:[NSSet setWithArray:writeTypes] completion:^(BOOL success, NSError * _Nullable error) {
-            
-            if (success) {
-                if (user) {
-                    user.birthDate = [self readBirthDate];
-                    user.bloodType = @([self readBloodGroup]);
-                    user.biologicalSex = @([self readsex]);
-                }
-                else if (!user) {
-                    user = (User *)[[ModelContext sharedContext] insertEntity:[User class]];
-                    //                user.mobile = [API contactNumber ];
-                    user.birthDate = [self readBirthDate];
-                    user.bloodType = @([self readBloodGroup]);
-                    user.biologicalSex = @([self readsex]);
-                    [user save];
-                }
-            }
-        }];
+    _healthStore = [[HKHealthStore alloc] init];
 
-    }
-    
+    [_healthStore requestAuthorizationToShareTypes:nil
+                                        readTypes:readTypes
+                                       completion:^(BOOL success, NSError *error) {
+                                           
+                                           if(success == YES)
+                                           {
+                                               if (user) {
+                                                   user.birthDate = [self readBirthDate];
+                                                   user.bloodType = @([self readBloodGroup]);
+                                                   user.biologicalSex = @([self readsex]);
+                                               }
+                                               else if (!user) {
+                                                   user = (User *)[[ModelContext sharedContext] insertEntity:[User class]];
+                                                   //                user.mobile = [API contactNumber ];
+                                                   user.birthDate = [self readBirthDate];
+                                                   user.bloodType = @([self readBloodGroup]);
+                                                   user.biologicalSex = @([self readsex]);
+                                                   [user save];
+                                               }
+                                           }
+                                           else
+                                           {
+                                               // Determine if it was an error or if the
+                                               // user just canceld the authorization request
+                                           }
+                                           
+                                       }];
     
 }
 
 - (NSDate *)readBirthDate {
     NSError *error;
-    NSDate *dateOfBirth = [self.healthStore dateOfBirthWithError:&error];   // Convenience method of HKHealthStore to get date of birth directly.
+    NSDate *dateOfBirth = [_healthStore dateOfBirthWithError:&error];   // Convenience method of HKHealthStore to get date of birth directly.
     
     if (!dateOfBirth) {
         NSLog(@"Either an error occured fetching the user's age information or none has been stored yet. In your app, try to handle this gracefully.");
@@ -136,14 +165,14 @@
 - (HKBloodType)readBloodGroup{
     
     NSError *error;
-    HKBloodTypeObject *bloodType =  [self.healthStore bloodTypeWithError:&error];
+    HKBloodTypeObject *bloodType =  [_healthStore bloodTypeWithError:&error];
     return bloodType.bloodType;
 }
 
 
 -(HKBiologicalSex)readsex {
     NSError *error;
-    HKBiologicalSexObject *biologicalSex = [self.healthStore biologicalSexWithError:&error];
+    HKBiologicalSexObject *biologicalSex = [_healthStore biologicalSexWithError:&error];
     return biologicalSex.biologicalSex;
     
 }
@@ -218,8 +247,8 @@
     
     NSMutableArray *items = [[NSMutableArray alloc]init];
     User *user = (User *)[[ModelContext sharedContext]fetchEntity:[User class]];
-    [items addObject:[NSString stringWithFormat:@"%@",user.name]];
-    [items addObject:[NSString stringWithFormat:@"%@",user.mobile]];
+//    [items addObject:[NSString stringWithFormat:@"%@",user.name]];
+//    [items addObject:[NSString stringWithFormat:@"%@",user.mobile]];
     [items addObject:[NSString stringWithFormat:@"DOB: %@",[user.birthDate dateStringInFormat:@"dd-MMM-yyyy"]]];
     
     switch (user.bloodType.integerValue) {

@@ -10,12 +10,6 @@
 		6A28D9311CE47E65002B2AD8 /* TagsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A28D9301CE47E65002B2AD8 /* TagsController.m */; };
 		6A28D9331CE49DA3002B2AD8 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A28D9321CE49DA3002B2AD8 /* MobileCoreServices.framework */; };
 		6A28D9351CE4A566002B2AD8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A28D9341CE4A566002B2AD8 /* MessageUI.framework */; };
-		6A5669581CEB3F2100F18A02 /* BaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A56694C1CEB3F2100F18A02 /* BaseClass.m */; };
-		6A5669591CEB3F2100F18A02 /* Geometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A56694F1CEB3F2100F18A02 /* Geometry.m */; };
-		6A56695A1CEB3F2100F18A02 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5669511CEB3F2100F18A02 /* Location.m */; };
-		6A56695B1CEB3F2100F18A02 /* OpeningHours.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5669531CEB3F2100F18A02 /* OpeningHours.m */; };
-		6A56695C1CEB3F2100F18A02 /* Photos.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5669551CEB3F2100F18A02 /* Photos.m */; };
-		6A56695D1CEB3F2100F18A02 /* Results.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5669571CEB3F2100F18A02 /* Results.m */; };
 		6AD948E31CE1DDB500273466 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD948E21CE1DDB500273466 /* main.m */; };
 		6AD948E61CE1DDB500273466 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD948E51CE1DDB500273466 /* AppDelegate.m */; };
 		6AD948E91CE1DDB500273466 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD948E81CE1DDB500273466 /* ViewController.m */; };
@@ -46,6 +40,12 @@
 		6AD9494D1CE45E9B00273466 /* ContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD9494C1CE45E9B00273466 /* ContactsController.m */; };
 		6AD949511CE468EE00273466 /* NSString+TString.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD9494F1CE468EE00273466 /* NSString+TString.m */; };
 		B908F759847BCAF1AE7EF2D3 /* libPods-CarePlus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2107FB3F9DB96BEE8264C143 /* libPods-CarePlus.a */; };
+		B9869DA21CEB7F5600C51197 /* AddressComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = B9869D981CEB7F5600C51197 /* AddressComponents.m */; };
+		B9869DA31CEB7F5600C51197 /* BaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = B9869D9A1CEB7F5600C51197 /* BaseClass.m */; };
+		B9869DA41CEB7F5600C51197 /* Geometry.m in Sources */ = {isa = PBXBuildFile; fileRef = B9869D9D1CEB7F5600C51197 /* Geometry.m */; };
+		B9869DA51CEB7F5600C51197 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = B9869D9F1CEB7F5600C51197 /* Location.m */; };
+		B9869DA61CEB7F5600C51197 /* Result.m in Sources */ = {isa = PBXBuildFile; fileRef = B9869DA11CEB7F5600C51197 /* Result.m */; };
+		B9BCCF621CEB5FE500EE6D16 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9BCCF611CEB5FE500EE6D16 /* HealthKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,19 +56,6 @@
 		6A28D9321CE49DA3002B2AD8 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		6A28D9341CE4A566002B2AD8 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		6A56694A1CEB21CD00F18A02 /* CarePlus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CarePlus.entitlements; sourceTree = "<group>"; };
-		6A56694B1CEB3F2100F18A02 /* BaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseClass.h; sourceTree = "<group>"; };
-		6A56694C1CEB3F2100F18A02 /* BaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseClass.m; sourceTree = "<group>"; };
-		6A56694D1CEB3F2100F18A02 /* DataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModels.h; sourceTree = "<group>"; };
-		6A56694E1CEB3F2100F18A02 /* Geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Geometry.h; sourceTree = "<group>"; };
-		6A56694F1CEB3F2100F18A02 /* Geometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Geometry.m; sourceTree = "<group>"; };
-		6A5669501CEB3F2100F18A02 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
-		6A5669511CEB3F2100F18A02 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
-		6A5669521CEB3F2100F18A02 /* OpeningHours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpeningHours.h; sourceTree = "<group>"; };
-		6A5669531CEB3F2100F18A02 /* OpeningHours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpeningHours.m; sourceTree = "<group>"; };
-		6A5669541CEB3F2100F18A02 /* Photos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photos.h; sourceTree = "<group>"; };
-		6A5669551CEB3F2100F18A02 /* Photos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photos.m; sourceTree = "<group>"; };
-		6A5669561CEB3F2100F18A02 /* Results.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Results.h; sourceTree = "<group>"; };
-		6A5669571CEB3F2100F18A02 /* Results.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Results.m; sourceTree = "<group>"; };
 		6AD948DE1CE1DDB500273466 /* CarePlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarePlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AD948E21CE1DDB500273466 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6AD948E41CE1DDB500273466 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -125,6 +112,18 @@
 		6AD9494E1CE468EE00273466 /* NSString+TString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TString.h"; sourceTree = "<group>"; };
 		6AD9494F1CE468EE00273466 /* NSString+TString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TString.m"; sourceTree = "<group>"; };
 		86842FFC45C9B3F95DDB28C8 /* Pods-CarePlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarePlus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CarePlus/Pods-CarePlus.debug.xcconfig"; sourceTree = "<group>"; };
+		B9869D971CEB7F5600C51197 /* AddressComponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressComponents.h; sourceTree = "<group>"; };
+		B9869D981CEB7F5600C51197 /* AddressComponents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressComponents.m; sourceTree = "<group>"; };
+		B9869D991CEB7F5600C51197 /* BaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseClass.h; sourceTree = "<group>"; };
+		B9869D9A1CEB7F5600C51197 /* BaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseClass.m; sourceTree = "<group>"; };
+		B9869D9B1CEB7F5600C51197 /* DataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModels.h; sourceTree = "<group>"; };
+		B9869D9C1CEB7F5600C51197 /* Geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Geometry.h; sourceTree = "<group>"; };
+		B9869D9D1CEB7F5600C51197 /* Geometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Geometry.m; sourceTree = "<group>"; };
+		B9869D9E1CEB7F5600C51197 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		B9869D9F1CEB7F5600C51197 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		B9869DA01CEB7F5600C51197 /* Result.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Result.h; sourceTree = "<group>"; };
+		B9869DA11CEB7F5600C51197 /* Result.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Result.m; sourceTree = "<group>"; };
+		B9BCCF611CEB5FE500EE6D16 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +135,7 @@
 				6A28D9331CE49DA3002B2AD8 /* MobileCoreServices.framework in Frameworks */,
 				6AD949091CE1EAE900273466 /* CoreLocation.framework in Frameworks */,
 				B908F759847BCAF1AE7EF2D3 /* libPods-CarePlus.a in Frameworks */,
+				B9BCCF621CEB5FE500EE6D16 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,19 +253,17 @@
 				6AD949171CE2044C00273466 /* Models.h */,
 				6AD949181CE204D000273466 /* ModelContext.h */,
 				6AD949191CE204D000273466 /* ModelContext.m */,
-				6A56694B1CEB3F2100F18A02 /* BaseClass.h */,
-				6A56694C1CEB3F2100F18A02 /* BaseClass.m */,
-				6A56694D1CEB3F2100F18A02 /* DataModels.h */,
-				6A56694E1CEB3F2100F18A02 /* Geometry.h */,
-				6A56694F1CEB3F2100F18A02 /* Geometry.m */,
-				6A5669501CEB3F2100F18A02 /* Location.h */,
-				6A5669511CEB3F2100F18A02 /* Location.m */,
-				6A5669521CEB3F2100F18A02 /* OpeningHours.h */,
-				6A5669531CEB3F2100F18A02 /* OpeningHours.m */,
-				6A5669541CEB3F2100F18A02 /* Photos.h */,
-				6A5669551CEB3F2100F18A02 /* Photos.m */,
-				6A5669561CEB3F2100F18A02 /* Results.h */,
-				6A5669571CEB3F2100F18A02 /* Results.m */,
+				B9869D971CEB7F5600C51197 /* AddressComponents.h */,
+				B9869D981CEB7F5600C51197 /* AddressComponents.m */,
+				B9869D991CEB7F5600C51197 /* BaseClass.h */,
+				B9869D9A1CEB7F5600C51197 /* BaseClass.m */,
+				B9869D9B1CEB7F5600C51197 /* DataModels.h */,
+				B9869D9C1CEB7F5600C51197 /* Geometry.h */,
+				B9869D9D1CEB7F5600C51197 /* Geometry.m */,
+				B9869D9E1CEB7F5600C51197 /* Location.h */,
+				B9869D9F1CEB7F5600C51197 /* Location.m */,
+				B9869DA01CEB7F5600C51197 /* Result.h */,
+				B9869DA11CEB7F5600C51197 /* Result.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -273,6 +271,7 @@
 		FA3F7E551B48F9529ADF5E7B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B9BCCF611CEB5FE500EE6D16 /* HealthKit.framework */,
 				6A28D9341CE4A566002B2AD8 /* MessageUI.framework */,
 				6A28D9321CE49DA3002B2AD8 /* MobileCoreServices.framework */,
 				2107FB3F9DB96BEE8264C143 /* libPods-CarePlus.a */,
@@ -314,10 +313,10 @@
 				TargetAttributes = {
 					6AD948DD1CE1DDB500273466 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = LZTXQ98G2N;
+						DevelopmentTeam = 7E32YQ4RR8;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -411,9 +410,9 @@
 				6AD9493B1CE34F0F00273466 /* BiologicalSex+CoreDataProperties.m in Sources */,
 				6AD9494D1CE45E9B00273466 /* ContactsController.m in Sources */,
 				6AD949241CE20A3800273466 /* TagCell.m in Sources */,
-				6A5669581CEB3F2100F18A02 /* BaseClass.m in Sources */,
 				6AD949041CE1E04000273466 /* API.m in Sources */,
 				6AD948EF1CE1DDB500273466 /* CarePlus.xcdatamodeld in Sources */,
+				B9869DA61CEB7F5600C51197 /* Result.m in Sources */,
 				6AD949381CE34F0F00273466 /* TweetTags+CoreDataProperties.m in Sources */,
 				6AD9493A1CE34F0F00273466 /* User.m in Sources */,
 				6AD948E91CE1DDB500273466 /* ViewController.m in Sources */,
@@ -424,21 +423,20 @@
 				6AD949071CE1E08D00273466 /* SettingViewController.m in Sources */,
 				6AD9491A1CE204D000273466 /* ModelContext.m in Sources */,
 				6AD9494A1CE3578F00273466 /* NSDate+ZDate.m in Sources */,
+				B9869DA51CEB7F5600C51197 /* Location.m in Sources */,
 				6AD9493E1CE34F0F00273466 /* Blood+CoreDataProperties.m in Sources */,
 				6A28D9311CE47E65002B2AD8 /* TagsController.m in Sources */,
 				6AD948E61CE1DDB500273466 /* AppDelegate.m in Sources */,
 				6AD949421CE34F9300273466 /* TweetTags.m in Sources */,
-				6A5669591CEB3F2100F18A02 /* Geometry.m in Sources */,
-				6A56695D1CEB3F2100F18A02 /* Results.m in Sources */,
 				6AD949511CE468EE00273466 /* NSString+TString.m in Sources */,
 				6AD948E31CE1DDB500273466 /* main.m in Sources */,
 				6AD9493D1CE34F0F00273466 /* Contacts+CoreDataProperties.m in Sources */,
+				B9869DA41CEB7F5600C51197 /* Geometry.m in Sources */,
 				6AD949011CE1E01B00273466 /* HomeViewController.m in Sources */,
-				6A56695B1CEB3F2100F18A02 /* OpeningHours.m in Sources */,
-				6A56695C1CEB3F2100F18A02 /* Photos.m in Sources */,
-				6A56695A1CEB3F2100F18A02 /* Location.m in Sources */,
 				6AD949271CE20C6C00273466 /* HospitalCell.m in Sources */,
+				B9869DA21CEB7F5600C51197 /* AddressComponents.m in Sources */,
 				6AD949201CE20A2100273466 /* ContactCell.m in Sources */,
+				B9869DA31CEB7F5600C51197 /* BaseClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,12 +551,13 @@
 			baseConfigurationReference = 86842FFC45C9B3F95DDB28C8 /* Pods-CarePlus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CarePlus/CarePlus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CarePlus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rohde-schwarz.CarePlus";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appshoppy.CarePlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -569,12 +568,13 @@
 			baseConfigurationReference = 25D9AE45100053569E196A28 /* Pods-CarePlus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CarePlus/CarePlus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CarePlus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rohde-schwarz.CarePlus";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appshoppy.CarePlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

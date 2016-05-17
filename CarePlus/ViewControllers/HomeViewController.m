@@ -75,23 +75,24 @@
     
     static NSString *identifier = @"ContactCellIdentifier";
     HospitalCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    
+    Result* result = _dataSource[indexPath.row];
+
     [cell callingHospital:^{
         
 //        NSString *phoneNumber = [@"tel://" stringByAppendingString:mymobileNO.titleLabel.text];
-        NSString *phoneNumber = [@"tel://" stringByAppendingString:@"9999482385"];
+        NSString *phoneNumber = [@"tel://" stringByAppendingString:result.formattedPhoneNumber];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
     }];
     
-    Results *result = _dataSource[indexPath.row];
     [cell.hospitalName setText:result.name];
-    OpeningHours *openHrs = result.openingHours;
     
     NSMutableArray *descArray = [[NSMutableArray alloc]init];
     
-    [descArray addObject:[NSString stringWithFormat:@"Vicinity: %@",result.vicinity]];
-    [descArray addObject:[NSString stringWithFormat:@"Rating: %@",@(result.rating)]];
-    [descArray addObject:[NSString stringWithFormat:@"Open Now: %@",result.openingHours.openNow?@"YES": @"NO"]];
-    [descArray addObject:[NSString stringWithFormat:@"Opening Hours: %@",[result.openingHours.weekdayText componentsJoinedByString:@","]]];
+    [descArray addObject:[NSString stringWithFormat:@"Website: %@",result.website]];
+    [descArray addObject:[NSString stringWithFormat:@"Address: %@",result.formattedAddress]];
+//    [descArray addObject:[NSString stringWithFormat:@"Open Now: %@",result.openingHours.openNow?@"YES": @"NO"]];
+//    [descArray addObject:[NSString stringWithFormat:@"Opening Hours: %@",[result.openingHours.weekdayText componentsJoinedByString:@","]]];
     [descArray addObject:[NSString stringWithFormat:@"Types: %@",[result.types componentsJoinedByString:@","]]];
     
     [cell.hopitalDescription setText:[descArray componentsJoinedByString:@"\n"]];

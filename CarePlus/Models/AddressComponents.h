@@ -1,5 +1,5 @@
 //
-//  Photos.h
+//  AddressComponents.h
 //
 //  Created by Avinash Tag on 17/05/16
 //  Copyright (c) 2016 Rohde & Schwarz. All rights reserved.
@@ -9,12 +9,11 @@
 
 
 
-@interface Photos : NSObject <NSCoding, NSCopying>
+@interface AddressComponents : NSObject <NSCoding, NSCopying>
 
-@property (nonatomic, strong) NSArray *htmlAttributions;
-@property (nonatomic, assign) double width;
-@property (nonatomic, assign) double height;
-@property (nonatomic, strong) NSString *photoReference;
+@property (nonatomic, strong) NSString *shortName;
+@property (nonatomic, strong) NSString *longName;
+@property (nonatomic, strong) NSArray *types;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

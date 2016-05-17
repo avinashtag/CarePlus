@@ -6,13 +6,12 @@
 //
 
 #import "BaseClass.h"
-#import "Results.h"
+#import "Result.h"
 
 
-NSString *const kBaseClassStatus = @"status";
-NSString *const kBaseClassResults = @"results";
-NSString *const kBaseClassNextPageToken = @"next_page_token";
 NSString *const kBaseClassHtmlAttributions = @"html_attributions";
+NSString *const kBaseClassResult = @"result";
+NSString *const kBaseClassStatus = @"status";
 
 
 @interface BaseClass ()
@@ -23,10 +22,9 @@ NSString *const kBaseClassHtmlAttributions = @"html_attributions";
 
 @implementation BaseClass
 
-@synthesize status = _status;
-@synthesize results = _results;
-@synthesize nextPageToken = _nextPageToken;
 @synthesize htmlAttributions = _htmlAttributions;
+@synthesize result = _result;
+@synthesize status = _status;
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
@@ -41,22 +39,9 @@ NSString *const kBaseClassHtmlAttributions = @"html_attributions";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.status = [self objectOrNilForKey:kBaseClassStatus fromDictionary:dict];
-    NSObject *receivedResults = [dict objectForKey:kBaseClassResults];
-    NSMutableArray *parsedResults = [NSMutableArray array];
-    if ([receivedResults isKindOfClass:[NSArray class]]) {
-        for (NSDictionary *item in (NSArray *)receivedResults) {
-            if ([item isKindOfClass:[NSDictionary class]]) {
-                [parsedResults addObject:[Results modelObjectWithDictionary:item]];
-            }
-       }
-    } else if ([receivedResults isKindOfClass:[NSDictionary class]]) {
-       [parsedResults addObject:[Results modelObjectWithDictionary:(NSDictionary *)receivedResults]];
-    }
-
-    self.results = [NSArray arrayWithArray:parsedResults];
-            self.nextPageToken = [self objectOrNilForKey:kBaseClassNextPageToken fromDictionary:dict];
             self.htmlAttributions = [self objectOrNilForKey:kBaseClassHtmlAttributions fromDictionary:dict];
+            self.result = [Result modelObjectWithDictionary:[dict objectForKey:kBaseClassResult]];
+            self.status = [self objectOrNilForKey:kBaseClassStatus fromDictionary:dict];
 
     }
     
@@ -67,19 +52,6 @@ NSString *const kBaseClassHtmlAttributions = @"html_attributions";
 - (NSDictionary *)dictionaryRepresentation
 {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:self.status forKey:kBaseClassStatus];
-    NSMutableArray *tempArrayForResults = [NSMutableArray array];
-    for (NSObject *subArrayObject in self.results) {
-        if([subArrayObject respondsToSelector:@selector(dictionaryRepresentation)]) {
-            // This class is a model object
-            [tempArrayForResults addObject:[subArrayObject performSelector:@selector(dictionaryRepresentation)]];
-        } else {
-            // Generic object
-            [tempArrayForResults addObject:subArrayObject];
-        }
-    }
-    [mutableDict setValue:[NSArray arrayWithArray:tempArrayForResults] forKey:kBaseClassResults];
-    [mutableDict setValue:self.nextPageToken forKey:kBaseClassNextPageToken];
     NSMutableArray *tempArrayForHtmlAttributions = [NSMutableArray array];
     for (NSObject *subArrayObject in self.htmlAttributions) {
         if([subArrayObject respondsToSelector:@selector(dictionaryRepresentation)]) {
@@ -91,6 +63,8 @@ NSString *const kBaseClassHtmlAttributions = @"html_attributions";
         }
     }
     [mutableDict setValue:[NSArray arrayWithArray:tempArrayForHtmlAttributions] forKey:kBaseClassHtmlAttributions];
+    [mutableDict setValue:[self.result dictionaryRepresentation] forKey:kBaseClassResult];
+    [mutableDict setValue:self.status forKey:kBaseClassStatus];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -114,20 +88,18 @@ NSString *const kBaseClassHtmlAttributions = @"html_attributions";
 {
     self = [super init];
 
-    self.status = [aDecoder decodeObjectForKey:kBaseClassStatus];
-    self.results = [aDecoder decodeObjectForKey:kBaseClassResults];
-    self.nextPageToken = [aDecoder decodeObjectForKey:kBaseClassNextPageToken];
     self.htmlAttributions = [aDecoder decodeObjectForKey:kBaseClassHtmlAttributions];
+    self.result = [aDecoder decodeObjectForKey:kBaseClassResult];
+    self.status = [aDecoder decodeObjectForKey:kBaseClassStatus];
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
 
-    [aCoder encodeObject:_status forKey:kBaseClassStatus];
-    [aCoder encodeObject:_results forKey:kBaseClassResults];
-    [aCoder encodeObject:_nextPageToken forKey:kBaseClassNextPageToken];
     [aCoder encodeObject:_htmlAttributions forKey:kBaseClassHtmlAttributions];
+    [aCoder encodeObject:_result forKey:kBaseClassResult];
+    [aCoder encodeObject:_status forKey:kBaseClassStatus];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -136,10 +108,9 @@ NSString *const kBaseClassHtmlAttributions = @"html_attributions";
     
     if (copy) {
 
-        copy.status = [self.status copyWithZone:zone];
-        copy.results = [self.results copyWithZone:zone];
-        copy.nextPageToken = [self.nextPageToken copyWithZone:zone];
         copy.htmlAttributions = [self.htmlAttributions copyWithZone:zone];
+        copy.result = [self.result copyWithZone:zone];
+        copy.status = [self.status copyWithZone:zone];
     }
     
     return copy;

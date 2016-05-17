@@ -89,12 +89,14 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
-    NSLog(@"didUpdateToLocation: %@", newLocation);
     CLLocation *currentLocation = newLocation;
     
     if (currentLocation != nil) {
         self.coordinate = currentLocation.coordinate;
         _locationCompletion? _locationCompletion(currentLocation.coordinate):nil;
+        if (_locationCompletion) {
+            _locationCompletion = nil;
+        }
     }
 }
 
