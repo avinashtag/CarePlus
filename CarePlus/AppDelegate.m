@@ -10,8 +10,11 @@
 
 @interface AppDelegate (){
     
-    CLLocationManager *locationManager;
 }
+
+@property (nonatomic, strong)     CLLocationManager *locationManager;
+@property (nonatomic, copy)     LocationGet locationCompletion;
+
 
 @end
 
@@ -21,13 +24,36 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    
-    [locationManager startUpdatingLocation];
+    _locationManager = [[CLLocationManager alloc] init];
+    _locationManager.delegate = self;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self requestWhenInUseAuthorization];
     return YES;
 }
+
+- (void)requestWhenInUseAuthorization
+{
+    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+    
+    // If the status is denied or only granted for when in use, display an alert
+    if (status == kCLAuthorizationStatusAuthorizedWhenInUse || status == kCLAuthorizationStatusDenied) {
+        NSString *title;
+        title = (status == kCLAuthorizationStatusDenied) ? @"Location services are off" : @"Background location is not enabled";
+        NSString *message = @"To use background location you must turn on 'Always' in the Location Services Settings";
+        
+        UIAlertView *alertViews = [[UIAlertView alloc] initWithTitle:title
+                                                             message:message
+                                                            delegate:self
+                                                   cancelButtonTitle:@"Cancel"
+                                                   otherButtonTitles:@"Settings", nil];
+        [alertViews show];
+    }
+    // The user has not enabled any location services. Request background authorization.
+    else if (status == kCLAuthorizationStatusNotDetermined) {
+        [_locationManager requestWhenInUseAuthorization];
+    }
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -68,7 +94,23 @@
     
     if (currentLocation != nil) {
         self.coordinate = currentLocation.coordinate;
+        _locationCompletion? _locationCompletion(currentLocation.coordinate):nil;
     }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    NSLog(@"Auth status changed: %i", status);
+    if(status > 3){
+        // Check if we have to start monitoring beacons
+        NSLog(@"Do we need to initialise after auth given?");
+        //[self initialiseLocations];
+        [_locationManager startUpdatingLocation];
+    }
+}
+
+
+- (void) fetchLocation:(LocationGet)completion{
+    _locationCompletion = completion;
 }
 
 @end

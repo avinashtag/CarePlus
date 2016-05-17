@@ -45,6 +45,9 @@
         TweetTags *tweetTag = (TweetTags *) [[ModelContext sharedContext]insertEntity:[TweetTags class]];
         tweetTag.tag = [alert.textFields[0] text];
         [tweetTag save];
+        _dataSource = [[ModelContext sharedContext] fetchEntities:[TweetTags class]];
+        [self.tableView reloadData];
+
     }];
     
     [alert addAction: cancel];
@@ -70,26 +73,23 @@
     
     static NSString *identifier = @"tagCellIdentifier";
     TagCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    [cell.tagTitle setText:_dataSource[indexPath.row]];
+    TweetTags *tweetTag = _dataSource[indexPath.row];
+    [cell.tagTitle setText:tweetTag.tag];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        
-        [self.tableView beginUpdates];
-        
-        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
-        [self.tableView endUpdates];
-        
         NSMutableArray *temp = [[NSMutableArray alloc]initWithArray:_dataSource];
         TweetTags *tags = _dataSource[indexPath.row];
         [[ModelContext sharedContext]removeEntity:tags];
         [temp removeObjectAtIndex:indexPath.row];
         _dataSource = temp;
 
-        
+        [self.tableView beginUpdates];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+        [self.tableView endUpdates];
     }
 }
 

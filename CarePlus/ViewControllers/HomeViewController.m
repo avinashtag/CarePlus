@@ -13,6 +13,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <MessageUI/MessageUI.h>
 #import "AppDelegate.h"
+#import "DataModels.h"
 
 
 @interface HomeViewController ()<MFMessageComposeViewControllerDelegate>
@@ -74,8 +75,26 @@
     
     static NSString *identifier = @"ContactCellIdentifier";
     HospitalCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-
+    [cell callingHospital:^{
+        
+//        NSString *phoneNumber = [@"tel://" stringByAppendingString:mymobileNO.titleLabel.text];
+        NSString *phoneNumber = [@"tel://" stringByAppendingString:@"9999482385"];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+    }];
     
+    Results *result = _dataSource[indexPath.row];
+    [cell.hospitalName setText:result.name];
+    OpeningHours *openHrs = result.openingHours;
+    
+    NSMutableArray *descArray = [[NSMutableArray alloc]init];
+    
+    [descArray addObject:[NSString stringWithFormat:@"Vicinity: %@",result.vicinity]];
+    [descArray addObject:[NSString stringWithFormat:@"Rating: %@",@(result.rating)]];
+    [descArray addObject:[NSString stringWithFormat:@"Open Now: %@",result.openingHours.openNow?@"YES": @"NO"]];
+    [descArray addObject:[NSString stringWithFormat:@"Opening Hours: %@",[result.openingHours.weekdayText componentsJoinedByString:@","]]];
+    [descArray addObject:[NSString stringWithFormat:@"Types: %@",[result.types componentsJoinedByString:@","]]];
+    
+    [cell.hopitalDescription setText:[descArray componentsJoinedByString:@"\n"]];
     return cell;
 }
 
@@ -109,7 +128,7 @@
     if([MFMessageComposeViewController canSendText])
     {
         controller.body = bodyOfMessage;
-        controller.recipients = recipients;
+//        controller.recipients = recipients;
         controller.messageComposeDelegate = self;
         [self presentViewController:controller animated:YES completion:nil];
     }

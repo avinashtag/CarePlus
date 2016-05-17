@@ -47,37 +47,37 @@
             
             case 1:
             {
-                [_fnf1.name setText: contact.userName];
-                [_fnf1.mobile setText:[NSString stringWithFormat:@"%@",contact.mobile]];
-                [_fnf1.tweetTag setText:contact.tweetAccount];
-                [_fnf1.relation setText:contact.relation];
+                [_fnf2.name setText: contact.userName];
+                [_fnf2.mobile setText:[NSString stringWithFormat:@"%@",contact.mobile]];
+                [_fnf2.tweetTag setText:contact.tweetAccount];
+                [_fnf2.relation setText:contact.relation];
             }
                 break;
 
             case 2:
             {
-                [_fnf1.name setText: contact.userName];
-                [_fnf1.mobile setText:[NSString stringWithFormat:@"%@",contact.mobile]];
-                [_fnf1.tweetTag setText:contact.tweetAccount];
-                [_fnf1.relation setText:contact.relation];
+                [_fnf3.name setText: contact.userName];
+                [_fnf3.mobile setText:[NSString stringWithFormat:@"%@",contact.mobile]];
+                [_fnf3.tweetTag setText:contact.tweetAccount];
+                [_fnf3.relation setText:contact.relation];
             }
                 break;
 
             case 3:
             {
-                [_fnf1.name setText: contact.userName];
-                [_fnf1.mobile setText:[NSString stringWithFormat:@"%@",contact.mobile]];
-                [_fnf1.tweetTag setText:contact.tweetAccount];
-                [_fnf1.relation setText:contact.relation];
+                [_fnf4.name setText: contact.userName];
+                [_fnf4.mobile setText:[NSString stringWithFormat:@"%@",contact.mobile]];
+                [_fnf4.tweetTag setText:contact.tweetAccount];
+                [_fnf4.relation setText:contact.relation];
             }
                 break;
 
-            case 5:
+            case 4:
             {
-                [_fnf1.name setText: contact.userName];
-                [_fnf1.mobile setText:[NSString stringWithFormat:@"%@",contact.mobile]];
-                [_fnf1.tweetTag setText:contact.tweetAccount];
-                [_fnf1.relation setText:contact.relation];
+                [_fnf5.name setText: contact.userName];
+                [_fnf5.mobile setText:[NSString stringWithFormat:@"%@",contact.mobile]];
+                [_fnf5.tweetTag setText:contact.tweetAccount];
+                [_fnf5.relation setText:contact.relation];
             }
                 break;
 
@@ -161,19 +161,19 @@
         
         [self saveContact:_fnf1 index:0];
     }
-    else if ([self validatePass:_fnf2] && [self validate:_fnf2]) {
+    if ([self validatePass:_fnf2] && [self validate:_fnf2]) {
         
         [self saveContact:_fnf2 index:1];
     }
-    else if ([self validatePass:_fnf3] && [self validate:_fnf3]) {
+    if ([self validatePass:_fnf3] && [self validate:_fnf3]) {
         
         [self saveContact:_fnf3 index:2];
     }
-    else if ([self validatePass:_fnf4] && [self validate:_fnf4]) {
+    if ([self validatePass:_fnf4] && [self validate:_fnf4]) {
         
         [self saveContact:_fnf4 index:3];
     }
-    else if ([self validatePass:_fnf5] && [self validate:_fnf5]) {
+    if ([self validatePass:_fnf5] && [self validate:_fnf5]) {
         
         [self saveContact:_fnf5 index:4];
     }

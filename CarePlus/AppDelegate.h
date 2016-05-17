@@ -15,8 +15,10 @@
 @property (strong, nonatomic) UIWindow *window;
 
 @property (nonatomic, assign) CLLocationCoordinate2D coordinate;
+typedef void(^LocationGet)(CLLocationCoordinate2D coordinate);
 
 
+- (void) fetchLocation:(LocationGet)completion;
 
 @end
 

@@ -18,7 +18,7 @@
         <attribute name="oPositive" optional="YES" attributeType="Integer 16" defaultValueString="7" syncable="YES"/>
     </entity>
     <entity name="Contacts" representedClassName="Contacts" syncable="YES">
-        <attribute name="mobile" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="mobile" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
         <attribute name="relation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tweetAccount" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>

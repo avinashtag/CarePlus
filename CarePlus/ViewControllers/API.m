@@ -13,10 +13,11 @@
 #import <Social/Social.h>
 #import "NSDate+ZDate.h"
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "BaseClass.h"
 
 #define radius 20
 #define googleType @"hospital"
-#define kGOOGLE_API_KEY @"AIzaSyBf6ZER2bBfyflhYRK0XNs2bbEol-EBvFM"
+#define kGOOGLE_API_KEY @"AIzaSyBvYMlqzKaL-IQj5pUEfeQTvWUmuT6UeCo"
 
 @interface API (){
     SLComposeViewController *twitterSheet;
@@ -30,9 +31,26 @@
 
 - (void) getHopitals:(void(^)(NSArray *response))completion{
     
-    
     AppDelegate *appdelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-     NSString *urlstring = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/search/json?location=%f,%f&radius=%@&types=%@&sensor=true&key=%@", appdelegate.coordinate.latitude, appdelegate.coordinate.longitude, [NSString stringWithFormat:@"%i", radius], googleType, kGOOGLE_API_KEY];
+    if (appdelegate.coordinate.longitude!= 0) {
+       
+        [self fetchHospitals:completion];
+    }
+    else{
+        
+            [appdelegate fetchLocation:^(CLLocationCoordinate2D coordinate) {
+            [self fetchHospitals:completion];
+        }];
+    }
+        
+}
+
+
+- (void) fetchHospitals:(void(^)(NSArray *response))completion{
+    AppDelegate *appdelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+
+    NSString *urlstring = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%f,%f&radius=%@&types=%@&sensor=true&key=%@", appdelegate.coordinate.latitude, appdelegate.coordinate.longitude, [NSString stringWithFormat:@"%i", radius], googleType, kGOOGLE_API_KEY];
+    
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
@@ -45,11 +63,14 @@
             NSLog(@"Error: %@", error);
             completion(nil);
         } else {
-            completion(responseObject);
+            
+            BaseClass *base = [BaseClass modelObjectWithDictionary:responseObject];
+            completion(base.results);
             NSLog(@"%@ %@", response, responseObject);
         }
     }];
     [dataTask resume];
+
 }
 
 //
@@ -73,24 +94,31 @@
     NSArray *writeTypes = @[[HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMass]];
     __block User *user = (User *)[[ModelContext sharedContext]fetchEntity:[User class]];
     
-    [self.healthStore requestAuthorizationToShareTypes:[NSSet setWithArray:readTypes] readTypes:[NSSet setWithArray:writeTypes] completion:^(BOOL success, NSError * _Nullable error) {
+    
+    if ([self.healthStore authorizationStatusForType:[HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMass]]== HKAuthorizationStatusNotDetermined) {
         
-        if (success) {
-            if (user) {
-                user.birthDate = [self readBirthDate];
-                user.bloodType = @([self readBloodGroup]);
-                user.biologicalSex = @([self readsex]);
+        
+        [self.healthStore requestAuthorizationToShareTypes:[NSSet setWithArray:readTypes] readTypes:[NSSet setWithArray:writeTypes] completion:^(BOOL success, NSError * _Nullable error) {
+            
+            if (success) {
+                if (user) {
+                    user.birthDate = [self readBirthDate];
+                    user.bloodType = @([self readBloodGroup]);
+                    user.biologicalSex = @([self readsex]);
+                }
+                else if (!user) {
+                    user = (User *)[[ModelContext sharedContext] insertEntity:[User class]];
+                    //                user.mobile = [API contactNumber ];
+                    user.birthDate = [self readBirthDate];
+                    user.bloodType = @([self readBloodGroup]);
+                    user.biologicalSex = @([self readsex]);
+                    [user save];
+                }
             }
-            else if (!user) {
-                user = (User *)[[ModelContext sharedContext] insertEntity:[User class]];
-//                user.mobile = [API contactNumber ];
-                user.birthDate = [self readBirthDate];
-                user.bloodType = @([self readBloodGroup]);
-                user.biologicalSex = @([self readsex]);
-                [user save];
-            }
-        }
-    }];
+        }];
+
+    }
+    
     
 }
 
@@ -122,22 +150,78 @@
 
 
 - (void) doTweet{
+    
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
+        
         UIViewController *controller = [[[UIApplication sharedApplication].delegate window] rootViewController];
         twitterSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-        [twitterSheet setInitialText:[self tweetText]];
+        CLLocationCoordinate2D cordinate = [(AppDelegate *)[UIApplication sharedApplication].delegate coordinate];
+        NSString *location = [[NSString alloc]initWithFormat:@"Please Help Me !!! Location: Lat/Long: %f/%f", cordinate.latitude, cordinate.longitude];
+        NSString *message = [[NSString alloc]initWithFormat:@"%@,%@ %@",location, [self tweetText], [self tweeterTags]];
+        [twitterSheet setInitialText:message];
+        [twitterSheet addImage:[self tweetImage]];
         [controller presentViewController:twitterSheet animated:YES completion:nil];
     }
+}
 
+
+-(NSString *)tweeterTags{
+    
+    NSMutableArray *items = [[NSMutableArray alloc]init];
+    NSArray *tags = [[ModelContext sharedContext] fetchEntities:[TweetTags class]];
+    
+    [tags enumerateObjectsUsingBlock:^(TweetTags  *tweet, NSUInteger idx, BOOL * _Nonnull stop) {
+       
+        [items addObject: [NSString stringWithFormat:@"@%@",tweet.tag]];
+    }];
+    
+    return [items componentsJoinedByString:@" "];
+}
+
+
+-(UIImage *)tweetImage{
+    
+    NSString *text = [NSString stringWithFormat:@"Personal Info: %@\n\n%@",[self tweetText], [self tweetImageText]];
+    // set the font type and size
+    UIFont *font = [UIFont fontWithName:@"HelveticaNeue" size:10.0f];
+    NSDictionary *attributes = @{NSFontAttributeName: font};
+
+    CGSize size  = [text sizeWithAttributes:attributes]; // label or textview
+    
+    // check if UIGraphicsBeginImageContextWithOptions is available (iOS is 4.0+)
+    UIGraphicsBeginImageContextWithOptions(size,NO,0.0);
+    [text drawInRect:CGRectMake(0,0,size.width,size.height) withAttributes:attributes];
+    UIImage *testImg = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return testImg;
+}
+
+
+- (NSString *) tweetImageText{
+    
+    NSMutableArray *items = [[NSMutableArray alloc]init];
+    [items addObject:@"Emergency Contacts"];
+    
+    NSArray *fnf = [[ModelContext sharedContext] fetchEntities:[Contacts class]];
+    [fnf enumerateObjectsUsingBlock:^(Contacts  *contact, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        [items addObject:[NSString stringWithFormat:@"\n"]];
+        NSString *desc = [[NSString alloc]initWithFormat:@"%@, Relation: %@, Mobile: %@",contact.userName, contact.relation, contact.mobile];
+        [items addObject:desc];
+    }];
+
+    return [items componentsJoinedByString:@"\n"];
 }
 
 
 - (NSString *) tweetText{
+    
     NSMutableArray *items = [[NSMutableArray alloc]init];
     User *user = (User *)[[ModelContext sharedContext]fetchEntity:[User class]];
     [items addObject:[NSString stringWithFormat:@"%@",user.name]];
     [items addObject:[NSString stringWithFormat:@"%@",user.mobile]];
     [items addObject:[NSString stringWithFormat:@"DOB: %@",[user.birthDate dateStringInFormat:@"dd-MMM-yyyy"]]];
+    
     switch (user.bloodType.integerValue) {
         case HKBloodTypeNotSet:
 
@@ -182,6 +266,7 @@
         case HKBiologicalSexNotSet:
             
             break;
+            
         case HKBiologicalSexFemale:
             [items addObject:[NSString stringWithFormat:@"Female"]];
             break;
@@ -197,21 +282,7 @@
         default:
             break;
     }
-
-    
-    
-    //FNF
-    [items addObject:@"Emergency Contacts"];
-
-    NSArray *fnf = [[ModelContext sharedContext] fetchEntities:[Contacts class]];
-    [fnf enumerateObjectsUsingBlock:^(Contacts  *contact, NSUInteger idx, BOOL * _Nonnull stop) {
-        
-        [items addObject:contact.userName];
-        [items addObject:[NSString stringWithFormat:@"%@",contact.mobile]];
-    }];
-    
-    
-    return [items componentsJoinedByString:@", "];
+    return [items componentsJoinedByString:@"\n"];
 }
 
 
