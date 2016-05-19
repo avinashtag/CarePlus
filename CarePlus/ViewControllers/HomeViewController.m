@@ -116,12 +116,12 @@
     if (temp.count) {
         
         [temp enumerateObjectsUsingBlock:^(Contacts  *contact, NSUInteger idx, BOOL * _Nonnull stop) {
-            [recipient addObject:contact.mobile];
+            [recipient addObject:[NSString stringWithFormat:@"%@",contact.mobile]];
         }];
         
         CLLocationCoordinate2D cordinate = [(AppDelegate *)[UIApplication sharedApplication].delegate coordinate];
         NSString *message = [[NSString alloc]initWithFormat:@"Please Help Me !!! Location: Lat/Long: %f/%f", cordinate.latitude, cordinate.longitude];
-        [ self sendSMS:message recipientList:temp];
+        [ self sendSMS:message recipientList:recipient];
 
     }
     else{
@@ -138,7 +138,7 @@
     if([MFMessageComposeViewController canSendText])
     {
         controller.body = bodyOfMessage;
-//        controller.recipients = recipients;
+        controller.recipients = recipients;
         controller.messageComposeDelegate = self;
         [self presentViewController:controller animated:YES completion:nil];
     }
